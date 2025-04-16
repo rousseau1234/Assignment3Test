@@ -1,14 +1,17 @@
 class RequisitionSystem:
+    #Starting requisition ID
     def __init__(self):
         self.requisitions = []
-        self.requisition_id_counter = 10000  # Starting requisition ID
+        self.requisition_id_counter = 10000  
 
+    #Collecting staff information
     def staff_info(self):
         date = input("Enter date: ")
         staff_id = input("Enter Staff ID: ")
         staff_name = input("Enter Staff Name: ")
         return date, staff_id, staff_name
 
+    #Taking item names and calculating the total
     def requisitions_details(self):
         total = 0.0
         while True:
@@ -21,22 +24,28 @@ class RequisitionSystem:
 
         return total
 
+    #Deciding approval status based on the condition
     def requisition_approval(self, total):
         if total < 500:
             return "Approved"
         else:
             return "Pending"
 
+    #Adding a new requisition and generating unique requisition ID
     def submit_requisition(self):
         date, staff_id, staff_name = self.staff_info()
         total = self.requisitions_details()
         status = self.requisition_approval(total)
         self.requisition_id_counter += 1
         req_id = self.requisition_id_counter
+
+    #Generating approval status
         if status == "Approved":
             approval_ref = f"{staff_id}{str(req_id)[-3:]}"
         else:
             approval_ref = "Not available"
+
+    #Creating requisition record    
         requisition = {
             "Date": date,
             "Requisition ID": req_id,
@@ -48,7 +57,8 @@ class RequisitionSystem:
         }
         self.requisitions.append(requisition)
         print(f"Requisition submitted successfully.\n")
-
+        
+    #Responding to pending requisition    
     def respond_requisition(self):
         pending_reqs = [req for req in self.requisitions if req["Status"] == "Pending"]
         if not pending_reqs:
@@ -76,7 +86,8 @@ class RequisitionSystem:
                 print("Requisition status updated.")
                 return
         print("Requisition not found or not pending.")
-
+        
+    #Displaying all submitted requisitions
     def display_requisitions(self):
         if not self.requisitions:
             print("No requisitions to display.")
@@ -91,6 +102,7 @@ class RequisitionSystem:
             print(f"Status: {req['Status']}")
             print(f"Approval Reference Number: {req['Approval Reference Number']}\n")
 
+    #Displaying requisition statistics
     def requisition_statistics(self):
         total_submitted = len(self.requisitions)
         approved = len([req for req in self.requisitions if req["Status"] == "Approved"])
@@ -102,6 +114,7 @@ class RequisitionSystem:
         print(f"Pending: {pending}")
         print(f"Not approved: {not_approved}")
 
+#Main Menu loop
 def main():
     system = RequisitionSystem()
     while True:
@@ -126,4 +139,5 @@ def main():
         else:
             print("Invalid choice. Please enter a number between 1 and 5.")
 
+#Running the main fuction
 main()
