@@ -34,7 +34,7 @@ The **YAGNI** principle is applied throughout the project by not adding unnecess
 
 The principle of **Avoid Premature Optimisation** is followed by initially getting the system working and optimizing performance later. Functions like `submit_requisition()`, `respond_requisition()`, and `requisition_statistics()` are kept simple. Once the system is working, performance can be profiled and optimised if required.
 
-## ## Refactor, Refactor, Refactor
+## Refactor, Refactor, Refactor
 
 In this project, functions like `submit_requisition()` and `respond_requisition()` can be optimized and made more readable. Small things, such as simplifying logic or organizing code, accumulate in the long run.
 
