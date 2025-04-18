@@ -1,39 +1,31 @@
-# Assignment3Test
-# README – Software Design Principles in My Code
+# Requisition System Project
 
-## About This Project
+This project is a simple Requisition System built in Python to handle requisitions within an organization. The system allows staff members to submit requisitions, manager to respond to pending requisitions, display requisitions, and view requisition statistics. Below is an overview of the functionality and features of the code.
 
-This project is based on my Python programs: `calculator.py`, `discount_calculator.py`, and `greeting.py`. These programs show how good software design principles can be used to make clean, simple, and easy-to-read code. The main goal is not only to make the code work but also to make it easy for others to understand and improve in the future.
+## KISS (Keep It Simple, Stupid)
 
-## How Design Principles Were Used
+The code is based on the **KISS** principle as it has simple and easy-to-understand logic. Each function is designed to perform one task. For example, the `submit_requisition()` function handles submitting the process, and the `display_requisitions()` function displays the submitted requisitions. It makes the system easy to maintain and update. In addition, the design does not include any complexity, which allows other developers working in the future to easily understand and make modifications to the code whenever necessary.
 
-### KISS – Keep It Simple, Stupid  
-In all my files, I kept the code simple. For example, in `calculator.py`, each operation (add, subtract, multiply, divide) is clearly written in its own function. This makes the code easy to read and understand.
+## DRY (Don't Repeat Yourself)
 
-### DRY – Don’t Repeat Yourself  
-I avoided writing the same code many times. In `calculator.py`, instead of repeating the math logic, I created functions for each operation. This saves time and makes the code easier to fix or update.
+During the course of the project, the **DRY** principle is implemented to prevent redundancy. The `staff_info()` function is implemented in the `submit_requisition()` as well as in the `respond_requisition()` function to retrieve staff information to avoid repetition. Additionally, the calculation of the total cost of requisitions is placed within the `requisitions_details()` function so that when the calculation logic changes, this modification will be carried out at one location only. This reduces the possibilities for mistakes and makes the code easy to maintain.
 
-### SRP – Single Responsibility Principle  
-Each function has only one job. For example, in `discount_calculator.py`, the `calculate_discount` function only calculates the discount — it does not handle input or output.
+## Open/Closed Principle
 
-### Open/Closed Principle  
-The functions can be reused or extended without changing the core logic. If someone wants to add more features, like tax calculations in `discount_calculator.py`, they can do it by adding new functions, not by changing the old ones.
+The **Open/Closed** principle is used by keeping the system open to extension but closed to modification. For instance, when additional features are to be added, such as adding additional requisition categories or modifying approval procedures, they are added without altering the main code. The operations are in module form, and new functionality, such as different kinds of items or new approval rules, can be added by adding new functions or classes rather than changing the existing ones.
 
-### Composition Over Inheritance  
-Even though my code is simple and does not use classes, I still followed this idea by keeping small, reusable functions instead of making one big one.
+## Single Responsibility Principle
 
-### Separation of Concerns  
-In `greeting.py`, the input and output are separated from the message logic. This makes it easier to change the greeting message or how the user inputs data in the future.
+Each function and class within the system follows the **Single Responsibility Principle**, performing one specific task. For example, the `submit_requisition()` function performs the task of submitting a requisition only, while the `respond_requisition()` function handles the manager's response to pending requisitions. With responsibilities divided, the system is easier to maintain and has less room for error. Each part of the system is handling one specific item, and therefore the code is easier to understand and modify.
 
-### YAGNI  
-I only wrote code that I needed. For example, I didn’t add extra math functions in `calculator.py` that I wasn’t going to use.
+## Separation of Concerns
 
-### Avoid Premature Optimization  
-I made sure the code works first. I didn’t worry about making it faster or shorter before making sure it is correct.
+The code is also in compliance with the **Separation of Concerns** principle as it keeps various elements of the system not overlapping in functionality. For example, staff details are handled separately from the requisition details. Requisition submission logic is separated from the approval/rejection logic. This modular design makes it easy to manage and scale the system as new features can be added without affecting the existing functionalities.
 
-### Refactor and Clean Code  
-I reviewed my code often to keep it neat. I also used meaningful names for functions and variables so anyone can understand what they do.
+## YAGNI (You Ain't Gonna Need It)
+
+The **YAGNI** principle is applied throughout the project by not adding unnecessary complexity. Features are added only when they are needed. For instance, the system does not contain unnecessary features that are not demanded by the core requisition process. By this principle, the system remains easy to navigate, with no unused features or unnecessary code.
 
 ## Conclusion
 
-This project follows software design principles to keep the code clean, easy to read, and ready for future updates.
+This Requisition System demonstrates the application of basic software design principles in the sense that the code is neat, easy to maintain, and expandable. KISS, DRY, Open/Closed, Single Responsibility, Separation of Concerns, and YAGNI principles are applied in order to make the system efficient, understandable, and extensible in future if needed.
