@@ -14,6 +14,10 @@ During the course of the project, the **DRY** principle is implemented to preven
 
 The **Open/Closed** principle is used by keeping the system open to extension but closed to modification. For instance, when additional features are to be added, such as adding additional requisition categories or modifying approval procedures, they are added without altering the main code. The operations are in module form, and new functionality, such as different kinds of items or new approval rules, can be added by adding new functions or classes rather than changing the existing ones.
 
+## Composition Over Inheritance
+
+The system follows the **Composition over Inheritance** principle by keeping all the tasks in one class instead of using many related classes. Each function like `submit_requisition()` or `respond_requisition()` does a specific task. This keeps the code tidy, simple to change, and easy to add new features in the future without turning the code messy or complex.
+
 ## Single Responsibility Principle
 
 Each function and class within the system follows the **Single Responsibility Principle**, performing one specific task. For example, the `submit_requisition()` function performs the task of submitting a requisition only, while the `respond_requisition()` function handles the manager's response to pending requisitions. With responsibilities divided, the system is easier to maintain and has less room for error. Each part of the system is handling one specific item, and therefore the code is easier to understand and modify.
@@ -25,6 +29,18 @@ The code is also in compliance with the **Separation of Concerns** principle as 
 ## YAGNI (You Ain't Gonna Need It)
 
 The **YAGNI** principle is applied throughout the project by not adding unnecessary complexity. Features are added only when they are needed. For instance, the system does not contain unnecessary features that are not demanded by the core requisition process. By this principle, the system remains easy to navigate, with no unused features or unnecessary code.
+
+## Avoid Premature Optimisation
+
+The principle of **Avoid Premature Optimisation** is followed by initially getting the system working and optimizing performance later. Functions like `submit_requisition()`, `respond_requisition()`, and `requisition_statistics()` are kept simple. Once the system is working, performance can be profiled and optimised if required.
+
+## ## Refactor, Refactor, Refactor
+
+In this project, functions like `submit_requisition()` and `respond_requisition()` can be optimized and made more readable. Small things, such as simplifying logic or organizing code, accumulate in the long run.
+
+## Clever Code
+
+Code should be readable, not clever or confusing. In this project, all functions are written in plain code so others can view and modify it easily. Smart-looking one-liners or shortcuts are not used.
 
 ## Conclusion
 
