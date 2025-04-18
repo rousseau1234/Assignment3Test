@@ -8,7 +8,7 @@ The code is based on the **KISS** principle as it has simple and easy-to-underst
 
 ## DRY (Don't Repeat Yourself)
 
-During the course of the project, the **DRY** principle is implemented to prevent redundancy. The `staff_info()` function is implemented in the `submit_requisition()` as well as in the `respond_requisition()` function to retrieve staff information to avoid repetition. Additionally, the calculation of the total cost of requisitions is placed within the `requisitions_details()` function so that when the calculation logic changes, this modification will be carried out at one location only. This reduces the possibilities for mistakes and makes the code easy to maintain.
+During the project, the **DRY** principle is implemented to prevent redundancy. The `staff_info()` function is implemented in the `submit_requisition()` as well as in the `respond_requisition()` function to retrieve staff information to avoid repetition. Additionally, the calculation of the total cost of requisitions is placed within the `requisitions_details()` function so that when the calculation logic changes, this modification will be carried out at one location only. This reduces the possibilities for mistakes and makes the code easy to maintain.
 
 ## Open/Closed Principle
 
