@@ -3,16 +3,19 @@ Software Development Fundamentals Assessment Task 1
 Author: Rousseau Bhattacharjee
 """
 
+# Start requisition counter
 requisition_counter = 10000
 
 def staff_info():
     global requisition_counter
     requisition_counter += 1
 
+    # Collect staff information
     date = input("Date: ")
     staff_id = input("Staff ID: ")
     staff_name = input("Staff Name: ")
 
+    # Store staff data
     staff_data = {
         "Date": date,
         "Staff ID": staff_id,
@@ -20,6 +23,7 @@ def staff_info():
         "Requisition ID": requisition_counter
     }
 
+    # Display information
     print("\nPrinting Staff Information: ")
     print("Date: " + date)
     print("Staff ID: " + staff_id)
@@ -27,13 +31,13 @@ def staff_info():
     print("Requisition ID: " + str(requisition_counter))
 
     return staff_data
-    
+
 def requisitions_total():
+    
     staff_data = staff_info()
 
     print("\nPlease enter your requisition items (type 'done' when finished):")
-    total = 0
-
+    total = 0 
     while True:
         print("Please enter in format: Item $Price")
         item_input = input()
@@ -42,11 +46,13 @@ def requisitions_total():
             break
 
         try:
+   # Add price from the input
             price = float(item_input.split('$')[-1])
             total += price
         except:
-            print("Invalid Format")
+            print("Invalid Format") 
 
+    # Combine staff and total requisition data
     requisition_data = {
         "Date": staff_data["Date"],
         "Requisition ID": staff_data["Requisition ID"],
@@ -55,18 +61,21 @@ def requisitions_total():
         "Total": total
     }
 
-    print("$"+str(total))
+    print("$" + str(total))  # Print the total cost
 
     return requisition_data
+
 def requisition_approval():
     requisition_data = requisitions_total()
     status = "Pending"
     approval_ref = "Not assigned"
 
+    # Approve if total is more than $500 and generate approval reference
     if requisition_data["Total"] > 500:
         status = "Approved"
         approval_ref = requisition_data['Staff ID'] + str(requisition_data['Requisition ID'])[-3:]
 
+    # Store approval details
     approval_data = {
         "Date": requisition_data["Date"],
         "Requisition ID": requisition_data["Requisition ID"],
@@ -76,15 +85,19 @@ def requisition_approval():
         "Status": status,
         "Approval Reference": approval_ref,
     }
-    print("Total: $"+ str(requisition_data["Total"]))
-    print("Status: "+ status)
-    if requisition_data["Total"] > 500:
-        print("Approval Reference Number: "+ approval_ref)
+
+    # Display approval information
+    print("Total: $" + str(requisition_data["Total"]))
+    print("Status: " + status)
+    if status == "Approved":
+        print("Approval Reference Number: " + approval_ref)
 
     return approval_data
+
 def display_requisitions():
     approval_data = requisition_approval()
 
+    # Print final requisition summary
     print("\nPrinting Requisitions:")
     print("Date: " + approval_data["Date"])
     print("Requisition ID: " + str(approval_data["Requisition ID"]))
@@ -96,9 +109,9 @@ def display_requisitions():
     if approval_data["Status"] == "Approved":
         print("Approval Reference Number: " + approval_data["Approval Reference"])
 
-
+# Loop taking inputs until the user decides to finish
 while True:
     display_requisitions()
     t = input("Do you want to finish? Type 'Yes' or 'No': ")
-    if t.lower()=='yes':
-        break    
+    if t.lower() == 'yes':
+        break
