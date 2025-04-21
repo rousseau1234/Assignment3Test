@@ -1,34 +1,33 @@
 # Requisition System Project
 
-This project is a simple Requisition System built in Python to handle requisitions within an organization. The system allows staff members to submit requisitions, manager to respond to pending requisitions, display requisitions, and view requisition statistics. Below is an overview of the functionality and features of the code.
-
+I have developed this Python program to collect staff data like name, staff ID, name of their purchased items and the price. Based on the total amount of purchase, the system will automatically decide the status of the requisition. A new requisiton with an unique requisition number will be created each time for new entries. This code was designed following the basic software design principles which are outlined below.
 ## KISS (Keep It Simple, Stupid)
 
-The code is based on the **KISS** principle as it has simple and easy-to-understand logic. Each function is designed to perform one task. For example, the `submit_requisition()` function handles submitting the process, and the `display_requisitions()` function displays the submitted requisitions. It makes the system easy to maintain and update. In addition, the design does not include any complexity, which allows other developers working in the future to easily understand and make modifications to the code whenever necessary.
+I have tried to keep my code as simple as possible. The functions named staff_info(), requisitions_total(), requisition_approval() and display_requisitions() are used to simply collecting the staff informations, adding up the total amount of items purchased, approving the requisitons based on the approval threshold of $500 and showing the status of the requisitions respectively. The code is very easier to run and operate, avoiding all sorts of complexities.
 
 ## DRY (Don't Repeat Yourself)
 
-During the project, the **DRY** principle is implemented to prevent redundancy. The `staff_info()` function is implemented in the `submit_requisition()` as well as in the `respond_requisition()` function to retrieve staff information to avoid repetition. Additionally, the calculation of the total cost of requisitions is placed within the `requisitions_details()` function so that when the calculation logic changes, this modification will be carried out at one location only. This reduces the possibilities for mistakes and makes the code easy to maintain.
+Throughout the entire coding, I have avoid using the same code more than once. I have created multiple functions to do the tasks accurately. The dictionaries have been created so that datas are stored and can be used as many times without repeating them which ensures the DRY principle. 
 
 ## Open/Closed Principle
 
-The **Open/Closed** principle is used by keeping the system open to extension but closed to modification. For instance, when additional features are to be added, such as adding additional requisition categories or modifying approval procedures, they are added without altering the main code. The operations are in module form, and new functionality, such as different kinds of items or new approval rules, can be added by adding new functions or classes rather than changing the existing ones.
+As I have tried to keep my codes in module form, any further changes like adding new requisitions, modifying the codes or setting up some new functionalities can be easily done without altering the existing code. The Open/Closed principle is meant to keep the system open to extension but closed to modification, which perfectly aligns with my code.
 
 ## Composition Over Inheritance
 
-The system follows the **Composition over Inheritance** principle by keeping all the tasks in one class instead of using many related classes. Each function like `submit_requisition()` or `respond_requisition()` does a specific task. This keeps the code tidy, simple to change, and easy to add new features in the future without turning the code messy or complex.
+In this project the functions like staff_info(), requisitions_total(), requisition_approval() and display_requisitions() are used to collect staff data, collect items and total the price, figure out the status of the requisitions and display the final information respectively. So it clearly indicates that my functions are built on top of the other like one function is put inside another, using their return values from the previous one rather than copying the entire thing. This is the way I have maintained this principle.
 
 ## Single Responsibility Principle
 
-Each function and class within the system follows the **Single Responsibility Principle**, performing one specific task. For example, the `submit_requisition()` function performs the task of submitting a requisition only, while the `respond_requisition()` function handles the manager's response to pending requisitions. With responsibilities divided, the system is easier to maintain and has less room for error. Each part of the system is handling one specific item, and therefore the code is easier to understand and modify.
+Since each function of my code is doing single task like the staff_info() is taking the staff data, the requisitions_total() is taking the name of their purchased items and calculating the total, the requisition_approval() is giving a decision on the requisition based on the threshold of $500 and finally the display_requisitions() is showing the final outcome it is obvious that my code has maintained the Single Responsibility principle accurately.
 
 ## Separation of Concerns
 
-The code is also in compliance with the **Separation of Concerns** principle as it keeps various elements of the system not overlapping in functionality. For example, staff details are handled separately from the requisition details. Requisition submission logic is separated from the approval/rejection logic. This modular design makes it easy to manage and scale the system as new features can be added without affecting the existing functionalities.
+Separating each functionality of the code has been taken under high consideration by me. I have ensured that each functions are running single task at the same time without overlapping the other functions. For instance, while taking new entries each time the function is not affecting on the existing functions or the informations as they are done separately. 
 
 ## YAGNI (You Ain't Gonna Need It)
 
-The **YAGNI** principle is applied throughout the project by not adding unnecessary complexity. Features are added only when they are needed. For instance, the system does not contain unnecessary features that are not demanded by the core requisition process. By this principle, the system remains easy to navigate, with no unused features or unnecessary code.
+I have kept all unnecessary functions outside of the system to ensure smooth navigating system, creating better opportunities for future developments. Based on the requirements, I only have included the functions which are needed to run the system without any disturbance. So the code is less complex and easier to understand.
 
 ## Avoid Premature Optimisation
 
